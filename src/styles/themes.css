@@ -1,0 +1,212 @@
+@import 'tailwindcss';
+
+/* Horus Optic Custom Properties */
+:root {
+  /* Brand Colors */
+  --color-horus-purple: #B892D5;
+  --color-horus-gray: #9C989F;
+  --color-horus-white: #FFFFFF;
+  --color-horus-pink: #E29AEE;
+  --color-horus-dark: #1E1E1E;
+  
+  /* Semantic Colors - Light Mode */
+  --color-primary: var(--color-horus-purple);
+  --color-secondary: var(--color-horus-gray);
+  --color-accent: var(--color-horus-pink);
+  --color-background: var(--color-horus-white);
+  --color-foreground: var(--color-horus-dark);
+  --color-muted: #F8F9FA;
+  --color-muted-foreground: #6B7280;
+  --color-border: #E5E7EB;
+  --color-input: var(--color-horus-white);
+  --color-ring: var(--color-horus-purple);
+  
+  /* Card */
+  --color-card: var(--color-horus-white);
+  --color-card-foreground: var(--color-horus-dark);
+  
+  /* Popover */
+  --color-popover: var(--color-horus-white);
+  --color-popover-foreground: var(--color-horus-dark);
+  
+  /* Destructive */
+  --color-destructive: #EF4444;
+  --color-destructive-foreground: var(--color-horus-white);
+  
+  /* Success */
+  --color-success: #10B981;
+  --color-success-foreground: var(--color-horus-white);
+  
+  /* Warning */
+  --color-warning: #F59E0B;
+  --color-warning-foreground: var(--color-horus-white);
+  
+  /* Gradient Angles */
+  --gradient-horus: linear-gradient(135deg, var(--color-horus-purple) 0%, var(--color-horus-pink) 100%);
+  --gradient-horus-soft: linear-gradient(135deg, rgba(184, 146, 213, 0.1) 0%, rgba(226, 154, 238, 0.1) 100%);
+  
+  /* Shadows */
+  --shadow-horus: 0 4px 6px -1px rgba(184, 146, 213, 0.1), 0 2px 4px -1px rgba(184, 146, 213, 0.06);
+  --shadow-horus-lg: 0 10px 15px -3px rgba(184, 146, 213, 0.1), 0 4px 6px -2px rgba(184, 146, 213, 0.05);
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+  --color-background: #0A0A0A;
+  --color-foreground: #FAFAFA;
+  --color-muted: #1F1F1F;
+  --color-muted-foreground: #A1A1AA;
+  --color-border: #262626;
+  --color-input: #1F1F1F;
+  --color-card: #171717;
+  --color-card-foreground: #FAFAFA;
+  --color-popover: #171717;
+  --color-popover-foreground: #FAFAFA;
+  
+  /* Gradients for dark mode */
+  --gradient-horus-soft: linear-gradient(135deg, rgba(184, 146, 213, 0.2) 0%, rgba(226, 154, 238, 0.2) 100%);
+  --shadow-horus: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-horus-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+/* Global Styles */
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Custom Utilities */
+.bg-gradient-horus {
+  background: var(--gradient-horus);
+}
+
+.bg-gradient-horus-soft {
+  background: var(--gradient-horus-soft);
+}
+
+.shadow-horus {
+  box-shadow: var(--shadow-horus);
+}
+
+.shadow-horus-lg {
+  box-shadow: var(--shadow-horus-lg);
+}
+
+/* Glass Effect */
+.glass {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .glass {
+  background: rgba(23, 23, 23, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+[data-theme="dark"] .shimmer {
+  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse Animation for Cart Badge */
+@keyframes pulse-scale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.pulse-scale {
+  animation: pulse-scale 0.5s ease-in-out;
+}
+
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-primary);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Focus Visible */
+.focus-visible:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Ripple Effect */
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.ripple:active::before {
+  width: 300px;
+  height: 300px;
+}
