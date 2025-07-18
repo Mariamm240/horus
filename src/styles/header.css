@@ -1,0 +1,74 @@
+/* Header Glass Morphism Utilities */
+.header-glass {
+  @apply bg-white/70 backdrop-blur-md border-b border-gray-200/20;
+}
+
+.dark .header-glass {
+  @apply bg-slate-900/70 border-gray-700/20;
+}
+
+.header-gradient-border {
+  background: linear-gradient(
+    90deg,
+    theme('colors.purple.500') 0%,
+    theme('colors.pink.500') 100%
+  );
+  height: 1px;
+}
+
+.mega-menu-glass {
+  @apply bg-white/80 backdrop-blur-lg border border-gray-200/20 shadow-xl;
+}
+
+.dark .mega-menu-glass {
+  @apply bg-slate-900/80 border-gray-700/20;
+}
+
+.nav-link-underline {
+  position: relative;
+}
+
+.nav-link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    theme('colors.purple.500') 0%,
+    theme('colors.pink.500') 100%
+  );
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link-underline:hover::after,
+.nav-link-underline:focus::after {
+  width: 100%;
+}
+
+.mobile-nav-overlay {
+  @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-40;
+}
+
+.mobile-nav-panel {
+  @apply fixed inset-y-0 right-0 w-full max-w-sm bg-white/90 backdrop-blur-lg shadow-xl z-50 transform transition-transform duration-300 ease-in-out;
+}
+
+.dark .mobile-nav-panel {
+  @apply bg-slate-900/90;
+}
+
+.search-backdrop {
+  @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50;
+}
+
+.search-modal {
+  @apply fixed top-1/4 left-1/2 -translate-x-1/2 w-full max-w-2xl bg-white/90 backdrop-blur-lg rounded-2xl shadow-2xl border border-gray-200/20 z-50;
+}
+
+.dark .search-modal {
+  @apply bg-slate-900/90 border-gray-700/20;
+}
