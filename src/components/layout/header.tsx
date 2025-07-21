@@ -1,5 +1,6 @@
+
 import HeaderHorus from './header-horus'
 
-export function Header() {
-  return <HeaderHorus />
+export function Header({ onContactoClick }: { onContactoClick?: () => void }) {
+  return <HeaderHorus onContactoClick={onContactoClick} />
 }

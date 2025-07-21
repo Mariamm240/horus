@@ -34,7 +34,7 @@ function useCart() {
   return { items }
 }
 
-export default function HeaderHorus() {
+export default function HeaderHorus({ onContactoClick }: { onContactoClick?: () => void }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
@@ -132,13 +132,26 @@ export default function HeaderHorus() {
                     sections={item.megaMenu.sections}
                   />
                 ) : (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="nav-link-underline inline-flex items-center px-3 py-2 text-sm font-medium text-gray-900 hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 rounded-md transition-colors duration-200"
-                  >
-                    {item.name}
-                  </Link>
+                  item.name === "Contacto"
+                    ? (
+                      <button
+                        key={item.name}
+                        type="button"
+                        onClick={onContactoClick}
+                        className="nav-link-underline inline-flex items-center px-3 py-2 text-sm font-medium text-gray-900 hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 rounded-md transition-colors duration-200"
+                      >
+                        {item.name}
+                      </button>
+                    )
+                    : (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="nav-link-underline inline-flex items-center px-3 py-2 text-sm font-medium text-gray-900 hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 rounded-md transition-colors duration-200"
+                      >
+                        {item.name}
+                      </Link>
+                    )
                 )
               ))}
             </nav>

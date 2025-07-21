@@ -61,6 +61,10 @@ export const mainNavigation = [
   {
     name: "Testimonios",
     href: "/testimonios"
+  },
+  {
+    name: "Contacto",
+    href: "#"
   }
 ];
 

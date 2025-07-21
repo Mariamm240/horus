@@ -2,11 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "../styles/themes.css";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
-import { Toaster as SonnerToaster } from "sonner";
-import { ThemeProvider } from "next-themes";
-import { SWRConfig } from 'swr';
+import ClientLayoutWrapper from "@/components/layout/client-layout-wrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -46,44 +42,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={inter.variable} suppressHydrationWarning>
       <body className="font-sans antialiased bg-background text-foreground">
-        <ThemeProvider
-          attribute="data-theme"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <SWRConfig
-            value={{
-              errorRetryCount: 3,
-              errorRetryInterval: 5000,
-              revalidateOnFocus: false,
-            }}
-          >
-            <Header />
-            <main className="min-h-screen">
-              {children}
-            </main>
-            <Footer />
-            <SonnerToaster 
-              position="top-right"
-              toastOptions={{
-                style: {
-                  background: 'var(--color-card)',
-                  color: 'var(--color-card-foreground)',
-                  border: '1px solid var(--color-border)',
-                },
-              }}
-            />
-          </SWRConfig>
-        </ThemeProvider>
+        <ClientLayoutWrapper>
+          {children}
+        </ClientLayoutWrapper>
       </body>
     </html>
   );
