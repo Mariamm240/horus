@@ -59,8 +59,8 @@ export const mainNavigation = [
     href: "/servicios"
   },
   {
-    name: "Sobre Nosotros",
-    href: "/sobre-nosotros"
+    name: "Testimonios",
+    href: "/testimonios"
   }
 ];
 
